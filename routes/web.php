@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use \App\Http\Controllers\MainController;
+use \App\Http\Controllers\FileUploadController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [mainController::class, 'index'])->name('main');
+Route::post('/processUploadedFile', [FileUploadController::class, 'processUploadedFile']);
+Route::get('/search', [MainController::class, 'search'])->name('search');
